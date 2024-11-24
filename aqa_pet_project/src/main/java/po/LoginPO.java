@@ -2,6 +2,9 @@ package po;
 
 
 import driver.DriverPool;
+import element_wrappers.ButtonElement;
+import element_wrappers.FieldDecorator;
+import element_wrappers.InputElement;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,29 +12,29 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPO {
 
     @FindBy(id = "adminLogin")
-    WebElement loginInput;
+    InputElement loginInput;
 
     @FindBy(id = "adminPassword")
-    WebElement passwordInput;
+    InputElement passwordInput;
 
     @FindBy(id = "loginBtn")
-    WebElement loginBtn;
+    ButtonElement loginBtn;
 
     @FindBy(id = "errorMessage")
     WebElement errorMessage;
 
     public LoginPO(){
-        PageFactory.initElements(DriverPool.getDriver(), this);
+        PageFactory.initElements(new FieldDecorator(DriverPool.getDriver()), this);
     }
 
-    public WebElement getLoginInput() {
+    public InputElement getLoginInput() {
         return loginInput;
     }
 
-    public WebElement getPasswordInput() {
+    public InputElement getPasswordInput() {
         return passwordInput;
     }
-    public WebElement getLoginBtn() {
+    public ButtonElement getLoginBtn() {
         return loginBtn;
     }
 

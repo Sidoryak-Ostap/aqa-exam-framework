@@ -28,12 +28,12 @@ public class DeletePostBO {
     }
 
     public DeletePostBO clickDeleteBtn(){
-        deletePostPO.getDeletePostBtn().click();
+        deletePostPO.getDeletePostBtn().clickBtn();
         return this;
     }
 
     public DeletePostBO confirmDelete(){
-        deletePostPO.getConfirmDeleteBtn().click();
+        deletePostPO.getConfirmDeleteBtn().clickBtn();
         return this;
     }
 

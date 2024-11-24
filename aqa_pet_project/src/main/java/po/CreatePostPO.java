@@ -1,79 +1,82 @@
 package po;
 
 import driver.DriverPool;
-import org.openqa.selenium.WebElement;
+import element_wrappers.ButtonElement;
+import element_wrappers.FieldDecorator;
+import element_wrappers.InputElement;
+import element_wrappers.LinkElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CreatePostPO {
 
     @FindBy(id = "createPostLink")
-    WebElement createPostLink;
+    LinkElement createPostLink;
 
     @FindBy(id = "ukrTitleInput")
-    WebElement ukrTitleInput;
+    InputElement ukrTitleInput;
 
     @FindBy(id = "ukrShortDescInput")
-    WebElement ukrShortDescInput;
+    InputElement ukrShortDescInput;
 
     @FindBy(id = "ukrFullDescInput")
-    WebElement ukrFullDescInput;
+    InputElement ukrFullDescInput;
 
     @FindBy(id = "engTitleInput")
-    WebElement engTitleInput;
+    InputElement engTitleInput;
 
     @FindBy(id = "engShortDescInput")
-    WebElement engShortDescInput;
+    InputElement engShortDescInput;
 
     @FindBy(id = "engFullDescInput")
-    WebElement engFullDescInput;
+    InputElement engFullDescInput;
 
     @FindBy(id="fileInput")
-    WebElement fileInput;
+    InputElement fileInput;
 
     @FindBy(id = "createPostBtn")
-    WebElement createPostBtn;
+    ButtonElement createPostBtn;
 
 
 
 
     public CreatePostPO(){
-        PageFactory.initElements(DriverPool.getDriver(), this);
+        PageFactory.initElements(new FieldDecorator(DriverPool.getDriver()), this);
     }
 
-    public WebElement getCreatePostLink() {
+    public LinkElement getCreatePostLink() {
         return createPostLink;
     }
 
-    public WebElement getUkrTitleInput() {
+    public InputElement getUkrTitleInput() {
         return ukrTitleInput;
     }
 
-    public WebElement getUkrShortDescInput() {
+    public InputElement getUkrShortDescInput() {
         return ukrShortDescInput;
     }
 
-    public WebElement getUkrFullDescInput() {
+    public InputElement getUkrFullDescInput() {
         return ukrFullDescInput;
     }
 
-    public WebElement getEngTitleInput() {
+    public InputElement getEngTitleInput() {
         return engTitleInput;
     }
 
-    public WebElement getEngShortDescInput() {
+    public InputElement getEngShortDescInput() {
         return engShortDescInput;
     }
 
-    public WebElement getEngFullDescInput() {
+    public InputElement getEngFullDescInput() {
         return engFullDescInput;
     }
 
-    public WebElement getFileInput() {
+    public InputElement getFileInput() {
         return fileInput;
     }
 
-    public WebElement getCreatePostBtn() {
+    public ButtonElement getCreatePostBtn() {
         return createPostBtn;
     }
 }
