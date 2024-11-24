@@ -34,28 +34,27 @@ public class LoginBO {
     }
 
     public LoginBO focusLoginInput(){
-        loginPO.getLoginInput().click();
+        loginPO.getLoginInput().focusInput();
         return this;
     }
 
     public LoginBO fillLoginInput(String login){
-        loginPO.getLoginInput().sendKeys(login);
+        loginPO.getLoginInput().fillInput(login);
         return this;
     }
 
     public LoginBO focusPasswordInput(){
-        loginPO.getPasswordInput().isDisplayed();
-        loginPO.getPasswordInput().click();
+        loginPO.getPasswordInput().focusInput();
         return this;
     }
 
     public LoginBO fillPasswordInput(String password){
-        loginPO.getPasswordInput().sendKeys(password);
+        loginPO.getPasswordInput().fillInput(password);
         return this;
     }
 
     public LoginBO clickLoginBtn(){
-        loginPO.getLoginBtn().click();
+        loginPO.getLoginBtn().clickBtn();
         return this;
     }
 

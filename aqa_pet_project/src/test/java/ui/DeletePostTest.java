@@ -2,6 +2,8 @@ package ui;
 
 import bo.DeletePostBO;
 import bo.LoginBO;
+import driver.DriverPool;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -25,5 +27,10 @@ public class DeletePostTest {
                 .confirmDelete()
         // 4 Verify post was deleted
                 .verifyPostDeleted();
+    }
+
+    @AfterMethod
+    void closeBrowser(){
+        DriverPool.quitDriver();
     }
 }

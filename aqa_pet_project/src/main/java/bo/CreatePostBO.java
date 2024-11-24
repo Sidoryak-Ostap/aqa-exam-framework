@@ -6,12 +6,8 @@ import mongo.MongoDb;
 import org.bson.Document;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import po.CreatePostPO;
-
-import java.time.Duration;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -24,75 +20,74 @@ public class CreatePostBO {
     public CreatePostBO navigateToCreatePostPage(){
         WebDriver driver = DriverPool.getDriver();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-        WebElement createPostLink = wait.until(ExpectedConditions.visibilityOf(createPostPO.getCreatePostLink()));
+        WebElement createPostLink = createPostPO.getCreatePostLink().waitForLinkToBeVisible();
         createPostLink.click();
         return this;
     }
 
     public CreatePostBO focusUkrainianTitle(){
-        createPostPO.getUkrTitleInput().click();
+        createPostPO.getUkrTitleInput().focusInput();
         return this;
     }
     public CreatePostBO fillUkrainianTitle(){
-        createPostPO.getUkrTitleInput().sendKeys("Ukr title test");
+        createPostPO.getUkrTitleInput().fillInput("Ukr title test");
         return this;
     }
 
     public CreatePostBO focusUkrainianShortDesc(){
-        createPostPO.getUkrShortDescInput().click();
+        createPostPO.getUkrShortDescInput().focusInput();
         return this;
     }
     public CreatePostBO fillUkrainianShortDesc(){
-        createPostPO.getUkrShortDescInput().sendKeys("Ukr full desc test");
+        createPostPO.getUkrShortDescInput().fillInput("Ukr full desc test");
         return this;
     }
 
     public CreatePostBO focusUkrainianFullDesc(){
-        createPostPO.getUkrFullDescInput().click();
+        createPostPO.getUkrFullDescInput().focusInput();
         return this;
     }
     public CreatePostBO fillUkrainianFullDesc(){
-        createPostPO.getUkrFullDescInput().sendKeys("Ukr full desc test");
+        createPostPO.getUkrFullDescInput().fillInput("Ukr full desc test");
         return this;
     }
 
     public CreatePostBO focusEnglishTitle(){
-        createPostPO.getEngTitleInput().click();
+        createPostPO.getEngTitleInput().focusInput();
         return this;
     }
     public CreatePostBO fillEnglishTitle(){
-        createPostPO.getEngTitleInput().sendKeys("English title test");
+        createPostPO.getEngTitleInput().fillInput("English title test");
         return this;
     }
 
     public CreatePostBO focusEnglishShortDesc(){
-        createPostPO.getEngShortDescInput().click();
+        createPostPO.getEngShortDescInput().focusInput();
         return this;
     }
     public CreatePostBO fillEnglishShortDesc(){
-        createPostPO.getEngShortDescInput().sendKeys("English short desc test");
+        createPostPO.getEngShortDescInput().fillInput("English short desc test");
         return this;
     }
 
     public CreatePostBO focusEnglishFullDesc(){
-        createPostPO.getEngFullDescInput().click();
+        createPostPO.getEngFullDescInput().focusInput();
         return this;
     }
     public CreatePostBO fillEnglishFullDesc(){
-        createPostPO.getEngFullDescInput().sendKeys("English full desc test");
+        createPostPO.getEngFullDescInput().fillInput("English full desc test");
         return this;
     }
 
     public CreatePostBO chooseImage(){
         String filePath = System.getProperty("user.dir") + "/src/main/resources/images/Landscape-Color.jpg";
 
-        createPostPO.getFileInput().sendKeys(filePath);
+        createPostPO.getFileInput().fillInput(filePath);
         return this;
     }
 
     public CreatePostBO clickCreateBtn(){
-        createPostPO.getCreatePostBtn().click();
+        createPostPO.getCreatePostBtn().clickBtn();
         return this;
     }
 
