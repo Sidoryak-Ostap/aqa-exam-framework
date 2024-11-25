@@ -29,8 +29,8 @@ public class CreatePostBO {
         createPostPO.getUkrTitleInput().focusInput();
         return this;
     }
-    public CreatePostBO fillUkrainianTitle(){
-        createPostPO.getUkrTitleInput().fillInput("Ukr title test");
+    public CreatePostBO fillUkrainianTitle(String title){
+        createPostPO.getUkrTitleInput().fillInput(title);
         return this;
     }
 
@@ -38,8 +38,8 @@ public class CreatePostBO {
         createPostPO.getUkrShortDescInput().focusInput();
         return this;
     }
-    public CreatePostBO fillUkrainianShortDesc(){
-        createPostPO.getUkrShortDescInput().fillInput("Ukr full desc test");
+    public CreatePostBO fillUkrainianShortDesc(String shortDesc){
+        createPostPO.getUkrShortDescInput().fillInput(shortDesc);
         return this;
     }
 
@@ -47,8 +47,8 @@ public class CreatePostBO {
         createPostPO.getUkrFullDescInput().focusInput();
         return this;
     }
-    public CreatePostBO fillUkrainianFullDesc(){
-        createPostPO.getUkrFullDescInput().fillInput("Ukr full desc test");
+    public CreatePostBO fillUkrainianFullDesc(String fullDesc){
+        createPostPO.getUkrFullDescInput().fillInput(fullDesc);
         return this;
     }
 
@@ -56,8 +56,8 @@ public class CreatePostBO {
         createPostPO.getEngTitleInput().focusInput();
         return this;
     }
-    public CreatePostBO fillEnglishTitle(){
-        createPostPO.getEngTitleInput().fillInput("English title test");
+    public CreatePostBO fillEnglishTitle(String title){
+        createPostPO.getEngTitleInput().fillInput(title);
         return this;
     }
 
@@ -65,8 +65,8 @@ public class CreatePostBO {
         createPostPO.getEngShortDescInput().focusInput();
         return this;
     }
-    public CreatePostBO fillEnglishShortDesc(){
-        createPostPO.getEngShortDescInput().fillInput("English short desc test");
+    public CreatePostBO fillEnglishShortDesc(String shortDesc){
+        createPostPO.getEngShortDescInput().fillInput(shortDesc);
         return this;
     }
 
@@ -74,15 +74,15 @@ public class CreatePostBO {
         createPostPO.getEngFullDescInput().focusInput();
         return this;
     }
-    public CreatePostBO fillEnglishFullDesc(){
-        createPostPO.getEngFullDescInput().fillInput("English full desc test");
+    public CreatePostBO fillEnglishFullDesc(String fullDesc){
+        createPostPO.getEngFullDescInput().fillInput(fullDesc);
         return this;
     }
 
-    public CreatePostBO chooseImage(){
+    public CreatePostBO chooseImage(String image){
         String filePath = System.getProperty("user.dir") + "/src/main/resources/images/Landscape-Color.jpg";
 
-        createPostPO.getFileInput().fillInput(filePath);
+        createPostPO.getFileInput().fillInput(image);
         return this;
     }
 

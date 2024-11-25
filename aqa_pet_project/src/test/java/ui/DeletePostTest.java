@@ -3,10 +3,15 @@ package ui;
 import bo.DeletePostBO;
 import bo.LoginBO;
 import driver.DriverPool;
+import listeners.AllureListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners({
+        AllureListener.class
+})
 public class DeletePostTest {
 
     @BeforeMethod

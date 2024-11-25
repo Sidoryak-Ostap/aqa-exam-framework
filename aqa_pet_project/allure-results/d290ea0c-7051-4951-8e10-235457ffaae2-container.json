@@ -1,1 +1,0 @@
-{"uuid":"d290ea0c-7051-4951-8e10-235457ffaae2","name":"aqa_pet_project","children":["d036d836-6c93-46c6-9236-6c1008d5df9f"],"befores":[],"afters":[{"name":"closeBrowser","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1732392903045,"stop":1732392903225}],"start":1732392897502,"stop":1732392903225}

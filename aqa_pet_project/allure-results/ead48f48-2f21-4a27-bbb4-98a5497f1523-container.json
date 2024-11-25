@@ -1,1 +1,0 @@
-{"uuid":"ead48f48-2f21-4a27-bbb4-98a5497f1523","name":"ui.DeletePostTest.setup","children":["e427695f-0ddc-4291-8cf9-6f3dfe927028"],"description":"","befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1732465089300,"stop":1732465094349}],"afters":[],"start":1732465089299,"stop":1732465094349}
