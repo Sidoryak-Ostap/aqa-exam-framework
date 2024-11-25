@@ -1,1 +1,0 @@
-{"uuid":"37b0d70f-6caf-40de-a431-e77ae52d41c9","name":"ui.CreatePostTest.setup","children":["385e3a42-f151-4d50-ab96-904047dad583"],"description":"","befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1732458535782,"stop":1732458541395}],"afters":[],"start":1732458535782,"stop":1732458541396}

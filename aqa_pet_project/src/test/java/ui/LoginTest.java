@@ -2,9 +2,15 @@ package ui;
 
 import bo.LoginBO;
 import driver.DriverPool;
+import listeners.AllureListener;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
+@Listeners({
+        AllureListener.class
+})
 public class LoginTest {
 
     String admin = "admin";
@@ -12,6 +18,7 @@ public class LoginTest {
     String wrongPassword = "admin12";
     String expectedUrl = "http://localhost:3000/admin/view-posts";
     String expectedErrorMessage = "Хибний логін або пароль";
+
 
 
     @Test

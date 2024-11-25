@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DeletePostPO {
 
-    @FindBy(xpath = "//li[.//div[text()='Ukr title test']]")
+    @FindBy(xpath = "//li[.//div[text()='Ukr Title 1']]")
     WebElement postToDelete;
 
-    @FindBy(xpath = "//li[.//div[contains(text(), 'Ukr title test')]]//button[contains(text(), 'Видалити')]")
+    @FindBy(xpath = "//li[.//div[contains(text(), 'Ukr Title 1')]]//button[contains(text(), 'Видалити')]")
     ButtonElement deletePostBtn;
 
     @FindBy(id = "confirmDeleteBtn")
