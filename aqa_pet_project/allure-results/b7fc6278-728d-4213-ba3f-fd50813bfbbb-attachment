@@ -1,0 +1,23 @@
+{
+    "message": "Карточка музею видалена!",
+    "museum": {
+        "ukrainian": {
+            "title": "Some updated museum",
+            "workingHours": "Some updated ukr hrs",
+            "address": "Some address"
+        },
+        "english": {
+            "title": "Some title",
+            "workingHours": "Some eng hrs",
+            "address": "Some end address"
+        },
+        "_id": "6747105725849a56efaaa037",
+        "phone": "+380978034165",
+        "email": "someemail@gmail..com",
+        "link": "https://www.website.com/",
+        "photo": [
+            "https://res.cloudinary.com/dfgpm8lpy/image/upload/v1732710490/cevshmvvfzwnttlg51bx.jpg"
+        ],
+        "__v": 0
+    }
+}

@@ -34,51 +34,71 @@ public class CreatePostBO {
         return this;
     }
 
+    @Step("Focus ukrainian short description input")
     public CreatePostBO focusUkrainianShortDesc(){
         createPostPO.getUkrShortDescInput().focusInput();
         return this;
     }
+
+    @Step("Fill ukrainian short description input")
     public CreatePostBO fillUkrainianShortDesc(String shortDesc){
         createPostPO.getUkrShortDescInput().fillInput(shortDesc);
         return this;
     }
 
+
+    @Step("Focus ukrainian full description input")
     public CreatePostBO focusUkrainianFullDesc(){
         createPostPO.getUkrFullDescInput().focusInput();
         return this;
     }
+
+    @Step("Fill ukrainian full description input")
     public CreatePostBO fillUkrainianFullDesc(String fullDesc){
         createPostPO.getUkrFullDescInput().fillInput(fullDesc);
         return this;
     }
 
+
+    @Step("Focus english title input")
     public CreatePostBO focusEnglishTitle(){
         createPostPO.getEngTitleInput().focusInput();
         return this;
     }
+
+    @Step("Fill english title input")
     public CreatePostBO fillEnglishTitle(String title){
         createPostPO.getEngTitleInput().fillInput(title);
         return this;
     }
 
+
+    @Step("Focus english short description input")
     public CreatePostBO focusEnglishShortDesc(){
         createPostPO.getEngShortDescInput().focusInput();
         return this;
     }
+
+    @Step("Fill english short description input")
     public CreatePostBO fillEnglishShortDesc(String shortDesc){
         createPostPO.getEngShortDescInput().fillInput(shortDesc);
         return this;
     }
 
+
+    @Step("Focus english full description input")
     public CreatePostBO focusEnglishFullDesc(){
         createPostPO.getEngFullDescInput().focusInput();
         return this;
     }
+    @Step("Fill english full description input")
     public CreatePostBO fillEnglishFullDesc(String fullDesc){
         createPostPO.getEngFullDescInput().fillInput(fullDesc);
         return this;
     }
 
+
+    @Step("Attach post image")
     public CreatePostBO chooseImage(String image){
         String filePath = System.getProperty("user.dir") + "/src/main/resources/images/Landscape-Color.jpg";
 
@@ -86,16 +106,21 @@ public class CreatePostBO {
         return this;
     }
 
+
+    @Step("Click create post button")
     public CreatePostBO clickCreateBtn(){
         createPostPO.getCreatePostBtn().clickBtn();
         return this;
     }
 
+
+    @Step("Click close popup message button")
     public CreatePostBO closePopUpMessage(){
         createPostPO.getSuccessMessageBtn().waitForButtonToBeVisible().waitForButtonToBeClickable().clickBtn();
         return this;
     }
 
+    @Step("Verify post is created")
     public CreatePostBO verifyPostCreated(String expectedUkrTitle, String expectedEngTitle){
         try {
             MongoDb.init();

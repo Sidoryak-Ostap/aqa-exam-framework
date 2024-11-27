@@ -1,6 +1,7 @@
 package bo.museum;
 
 import com.mongodb.client.MongoCollection;
+import io.qameta.allure.Step;
 import mongo.MongoDb;
 import org.bson.Document;
 import org.testng.Assert;
@@ -15,26 +16,32 @@ public class DeleteMuseumBO {
     DeleteMuseumPO deleteMuseumPO = new DeleteMuseumPO();
 
 
+
+    @Step("Navigate to view museum page")
     public DeleteMuseumBO navigateToViewMuseumsPage(){
         deleteMuseumPO.getViewMuseumsLink().click();
         return this;
     }
 
+    @Step("Click delete museum button")
     public DeleteMuseumBO clickDeleteMuseumBtn(){
         deleteMuseumPO.getDeleteMuseumBtn().waitForButtonToBeVisible().waitForButtonToBeClickable().clickBtn();
         return this;
     }
 
+    @Step("Click confirm deletion button")
     public DeleteMuseumBO confirmDeletion(){
         deleteMuseumPO.getConfirmDeleteBtn().clickBtn();
         return this;
     }
 
+    @Step("Click close popup message button")
     public DeleteMuseumBO closePopUpMessage(){
         deleteMuseumPO.getSuccessMessageBtn().waitForButtonToBeClickable().clickBtn();
         return this;
     }
 
+    @Step("Verify museum is deleted")
     public DeleteMuseumBO verifyMuseumDeleted(){
         try {
             MongoDb.init();

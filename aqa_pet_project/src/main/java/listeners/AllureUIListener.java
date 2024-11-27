@@ -2,6 +2,7 @@ package listeners;
 
 import driver.DriverPool;
 import io.qameta.allure.Attachment;
+import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -71,4 +72,19 @@ public class AllureUIListener implements ITestListener, IInvokedMethodListener {
             return "Failed to capture DOM.";
         }
     }
+
+    @Attachment(value = "API Request", type = "text/plain")
+    public static String attachAPIRequest(String request) {
+        logger.info("Attaching API Request...");
+        return request;
+    }
+
+    @Attachment(value = "API Response", type = "text/plain")
+    public static String attachAPIResponse(Response response) {
+        logger.info("Attaching API Response...");
+        return response.prettyPrint();
+    }
+
+
+
 }

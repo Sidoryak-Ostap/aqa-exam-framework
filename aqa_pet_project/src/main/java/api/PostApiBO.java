@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import listeners.AllureUIListener;
 import mongo.MongoDb;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -25,6 +26,9 @@ public class PostApiBO {
 
         String body = "{\"login\":\"admin\", \"password\":\"admin\"}";
 
+        AllureUIListener.attachAPIRequest(loginUrl);
+
+
         Response loginResponse = given()
                 .header("Accept", "application/json")
                 .contentType(ContentType.JSON)
@@ -37,6 +41,9 @@ public class PostApiBO {
                 .statusCode(200)
                 .extract().response();
 
+        AllureUIListener.attachAPIResponse(loginResponse);
+
+
         String token = loginResponse.jsonPath().getString("token");
         Assert.assertNotNull(token);
         return token;
@@ -46,6 +53,8 @@ public class PostApiBO {
 
         String createPostUrl = "http://localhost:5000/api/admin/createPost";
         File photo = new File(getClass().getClassLoader().getResource("images/Landscape-Color.jpg").getFile());
+
+        AllureUIListener.attachAPIRequest(createPostUrl);
 
         Response createPostResponse = given()
                 .header("Accept", "application/json")
@@ -65,6 +74,8 @@ public class PostApiBO {
                 .statusCode(200)
                 .extract().response();
 
+        AllureUIListener.attachAPIResponse(createPostResponse);
+
 
         PostTemplate postTemplate = createPostResponse.jsonPath().getObject("post", PostTemplate.class);
         System.out.println("Post template form API response: " + postTemplate);
@@ -77,6 +88,8 @@ public class PostApiBO {
 
         String updatePostUrl = "http://localhost:5000/api/admin/editPost";
         File photo = new File(getClass().getClassLoader().getResource("images/Landscape-Color.jpg").getFile());
+
+        AllureUIListener.attachAPIRequest(updatePostUrl);
 
         Response updatePostResponse = given()
                 .header("Accept", "application/json")
@@ -96,6 +109,9 @@ public class PostApiBO {
                 .all()
                 .statusCode(200)
                 .extract().response();
+
+        AllureUIListener.attachAPIResponse(updatePostResponse);
+
 
         PostTemplate postTemplate = updatePostResponse.jsonPath().getObject("post", PostTemplate.class);
         System.out.println("Post template form API response: " + postTemplate);

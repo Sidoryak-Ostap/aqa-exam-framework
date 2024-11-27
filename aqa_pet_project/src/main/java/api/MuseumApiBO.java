@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import listeners.AllureUIListener;
 import mongo.MongoDb;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -45,6 +46,7 @@ public class MuseumApiBO {
     public MuseumTemplate createMuseum(String token)  {
 
         String createMuseumUrl = "http://localhost:5000/api/admin/addMuseum";
+        AllureUIListener.attachAPIRequest(createMuseumUrl);
         File photo = new File(getClass().getClassLoader().getResource("images/Landscape-Color.jpg").getFile());
 
         Response createMuseumResponse = given()
@@ -68,6 +70,9 @@ public class MuseumApiBO {
                 .statusCode(200)
                 .extract().response();
 
+        AllureUIListener.attachAPIResponse(createMuseumResponse);
+
+
 
         MuseumTemplate museumTemplate = createMuseumResponse.jsonPath().getObject("museum", MuseumTemplate.class);
         System.out.println("museum template form API response: " + museumTemplate);
@@ -77,10 +82,12 @@ public class MuseumApiBO {
     }
     public MuseumTemplate updateMuseum(String token, String museumId)  {
 
-        String createMuseumUrl = "http://localhost:5000/api/admin/editMuseum";
+        String updateMuseumUrl = "http://localhost:5000/api/admin/editMuseum";
         File photo = new File(getClass().getClassLoader().getResource("images/Landscape-Color.jpg").getFile());
 
-        Response createMuseumResponse = given()
+        AllureUIListener.attachAPIRequest(updateMuseumUrl);
+
+        Response updateMuseumResponse = given()
                 .header("Accept", "application/json")
                 .header("Authorization", "Bearer " + token)
                 .multiPart("ukrTitle", "Some updated museum")
@@ -95,15 +102,16 @@ public class MuseumApiBO {
                 .multiPart("photo", photo, "image/jpeg")
                 .multiPart("museumId", museumId)
                 .when()
-                .patch(createMuseumUrl)
+                .patch(updateMuseumUrl)
                 .then()
                 .log()
                 .all()
                 .statusCode(200)
                 .extract().response();
 
+        AllureUIListener.attachAPIResponse(updateMuseumResponse);
 
-        MuseumTemplate museumTemplate = createMuseumResponse.jsonPath().getObject("museum", MuseumTemplate.class);
+        MuseumTemplate museumTemplate = updateMuseumResponse.jsonPath().getObject("museum", MuseumTemplate.class);
         System.out.println("Museum template form API response: " + museumTemplate);
 
         return museumTemplate;
@@ -111,8 +119,11 @@ public class MuseumApiBO {
     }
 
     public MuseumTemplate deleteMuseum(String token, String museumId){
-        String deletePostUrl = "http://localhost:5000/api/admin/deleteMuseum";
+        String deleteMuseumUrl = "http://localhost:5000/api/admin/deleteMuseum";
         String body = "{\"museumId\":\""+museumId+"\"}";
+
+        AllureUIListener.attachAPIRequest(deleteMuseumUrl);
+
 
         Response deleteMuseumResponse = given()
                 .header("Accept", "application/json")
@@ -120,12 +131,14 @@ public class MuseumApiBO {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .delete(deletePostUrl)
+                .delete(deleteMuseumUrl)
                 .then()
                 .log()
                 .all()
                 .statusCode(200)
                 .extract().response();
+
+        AllureUIListener.attachAPIResponse(deleteMuseumResponse);
 
         MuseumTemplate museumTemplate = deleteMuseumResponse.jsonPath().getObject("museum", MuseumTemplate.class);
         System.out.println("Museum template form API response: " + museumTemplate);

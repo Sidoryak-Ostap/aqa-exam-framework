@@ -2,6 +2,7 @@ package bo.post;
 
 import com.mongodb.client.MongoCollection;
 import driver.DriverPool;
+import io.qameta.allure.Step;
 import mongo.MongoDb;
 import org.bson.Document;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,9 @@ public class DeletePostBO {
     private static final int MAX_WAIT_TIME_MS = 5000;
     private static final int POLLING_INTERVAL_MS = 500;
 
+
+
+    @Step("Verify post to delete exists")
     public DeletePostBO verifyPostToDeleteExists(){
         WebDriverWait wait = new WebDriverWait(DriverPool.getDriver(), Duration.ofSeconds(10));
         WebElement postToDelete = wait.until(ExpectedConditions.visibilityOf(deletePostPO.getPostToDelete()));
@@ -27,21 +31,28 @@ public class DeletePostBO {
         return this;
     }
 
+
+    @Step("Click delete post button")
     public DeletePostBO clickDeleteBtn(){
         deletePostPO.getDeletePostBtn().clickBtn();
         return this;
     }
 
+
+    @Step("Click confirm delete post button")
     public DeletePostBO confirmDelete(){
         deletePostPO.getConfirmDeleteBtn().clickBtn();
         return this;
     }
 
+
+    @Step("Click close popup message button")
     public DeletePostBO closeSuccessMessage(){
         deletePostPO.getSuccessMessageBtn().waitForButtonToBeVisible().waitForButtonToBeClickable().clickBtn();
         return this;
     }
 
+    @Step("Verify post is deleted")
     public DeletePostBO verifyPostDeleted() {
         try {
             MongoDb.init();

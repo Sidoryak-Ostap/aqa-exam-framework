@@ -1,0 +1,12 @@
+{
+    "message": "Партнерська організація видалена!",
+    "partner": {
+        "_id": "6747107b25849a56efaaa056",
+        "name": "Some partner",
+        "link": "https://www.google.com/",
+        "logo": [
+            "https://res.cloudinary.com/dfgpm8lpy/image/upload/v1732710523/ngxodnavsu4axxkt3b8p.jpg"
+        ],
+        "__v": 0
+    }
+}
