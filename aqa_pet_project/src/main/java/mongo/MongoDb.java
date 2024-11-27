@@ -31,6 +31,20 @@ public class MongoDb {
         return collection;
     }
 
+    public static MongoCollection<Document> getPartnerCollection(){
+        String collectionName = "partners";
+        if(database == null) init();
+        MongoCollection<Document> collection = database.getCollection(collectionName);
+        return collection;
+    }
+
+    public static MongoCollection<Document> getMuseumCollection(){
+        String collectionName = "museums";
+        if(database == null) init();
+        MongoCollection<Document> collection = database.getCollection(collectionName);
+        return collection;
+    }
+
     public static void closeConnection() {
         if (mongoClient != null) {
             mongoClient.close();

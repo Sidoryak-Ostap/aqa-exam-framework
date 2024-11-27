@@ -13,13 +13,21 @@ public class LinkElement extends Element{
         super(webElement);
     }
 
-    public WebElement waitForLinkToBeVisible(){
+    public LinkElement waitForLinkToBeVisible(){
         WebDriverWait wait = new WebDriverWait(DriverPool.getDriver(), Duration.ofSeconds(4));
-        return wait.until(ExpectedConditions.visibilityOf(super.getElement()));
+        wait.until(ExpectedConditions.visibilityOf(super.getElement()));
+        return this;
     }
 
-    public void click(){
+    public LinkElement waitForLinkToBeClickable(){
+        WebDriverWait wait = new WebDriverWait(DriverPool.getDriver(), Duration.ofSeconds(4));
+        wait.until(ExpectedConditions.elementToBeClickable(super.getElement()));
+        return this;
+    }
+
+    public LinkElement click(){
         super.getElement().click();
+        return this;
     }
 
 }

@@ -1,5 +1,6 @@
 package api;
 
+import api.templates.PostTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.MongoCollection;
@@ -67,6 +68,7 @@ public class PostApiBO {
 
         PostTemplate postTemplate = createPostResponse.jsonPath().getObject("post", PostTemplate.class);
         System.out.println("Post template form API response: " + postTemplate);
+
         return postTemplate;
 
     }
