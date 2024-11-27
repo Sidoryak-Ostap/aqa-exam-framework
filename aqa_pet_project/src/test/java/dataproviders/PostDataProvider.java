@@ -23,8 +23,6 @@ public class PostDataProvider {
     public Object[][] provideUpdatePostData() {
         return new Object[][]{
                 {"Update Ukr Title 1", "Update Ukr Short Description 1", "Update Ukr Full Description 1", "Update Eng Title 1", "Update Eng Short Description 1", "Update Eng Full Description 1", filePathImage1},
-//                {"Update Ukr Title 2", "Update Ukr Short Description 2", "Update Ukr Full Description 2", "Update Eng Title 2", "Update Eng Short Description 2", "Update Eng Full Description 2", filePathImage2},
-//                {"Update Ukr Title 3", "Update Ukr Short Description 3", "Update Ukr Full Description 3", "Update Eng Title 3", "Update Eng Short Description 3", "Update Eng Full Description 3", filePathImage3}
         };
     }
 }

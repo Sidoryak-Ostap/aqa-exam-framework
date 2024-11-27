@@ -8,7 +8,6 @@ public class PartnerDataProvider {
     String filePathImage2 = System.getProperty("user.dir") + "/src/main/resources/images/partner2.jpg";
 
 
-
     @DataProvider
     public Object[][] provideCreatePartnerData(){
         return new Object[][] {
