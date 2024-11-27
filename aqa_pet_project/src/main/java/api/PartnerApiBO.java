@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import listeners.AllureUIListener;
 import mongo.MongoDb;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -24,6 +25,9 @@ public class PartnerApiBO {
 
         String body = "{\"login\":\"admin\", \"password\":\"admin\"}";
 
+        AllureUIListener.attachAPIRequest(loginUrl);
+
+
         Response loginResponse = given()
                 .header("Accept", "application/json")
                 .contentType(ContentType.JSON)
@@ -36,6 +40,8 @@ public class PartnerApiBO {
                 .statusCode(200)
                 .extract().response();
 
+        AllureUIListener.attachAPIResponse(loginResponse);
+
         String token = loginResponse.jsonPath().getString("token");
         Assert.assertNotNull(token);
         return token;
@@ -43,8 +49,10 @@ public class PartnerApiBO {
 
     public PartnerTemplate createPartner(String token)  {
 
-        String createPostUrl = "http://localhost:5000/api/admin/addPartner";
+        String createPartnerUrl = "http://localhost:5000/api/admin/addPartner";
         File photo = new File(getClass().getClassLoader().getResource("images/partner1.jpg").getFile());
+
+        AllureUIListener.attachAPIRequest(createPartnerUrl);
 
         Response createPartnerResponse = given()
                 .header("Accept", "application/json")
@@ -53,12 +61,15 @@ public class PartnerApiBO {
                 .multiPart("link", "https://www.google.com/")
                 .multiPart("logo", photo, "image/jpeg")
                 .when()
-                .post(createPostUrl)
+                .post(createPartnerUrl)
                 .then()
                 .log()
                 .all()
                 .statusCode(200)
                 .extract().response();
+
+        AllureUIListener.attachAPIResponse(createPartnerResponse);
+
 
 
         PartnerTemplate partnerTemplate = createPartnerResponse.jsonPath().getObject("partner", PartnerTemplate.class);
@@ -69,8 +80,11 @@ public class PartnerApiBO {
     }
 
     public PartnerTemplate deletePartner(String token, String partnerId){
-        String deletePostUrl = "http://localhost:5000/api/admin/deletePartner";
+        String deletePartnerUrl = "http://localhost:5000/api/admin/deletePartner";
         String body = "{\"partnerId\":\""+partnerId+"\"}";
+
+        AllureUIListener.attachAPIRequest(deletePartnerUrl);
+
 
         Response deletePartnerResponse = given()
                 .header("Accept", "application/json")
@@ -78,12 +92,14 @@ public class PartnerApiBO {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .delete(deletePostUrl)
+                .delete(deletePartnerUrl)
                 .then()
                 .log()
                 .all()
                 .statusCode(200)
                 .extract().response();
+
+        AllureUIListener.attachAPIResponse(deletePartnerResponse);
 
         PartnerTemplate partnerTemplate = deletePartnerResponse.jsonPath().getObject("partner", PartnerTemplate.class);
         System.out.println("Partner template form API response: " + partnerTemplate);

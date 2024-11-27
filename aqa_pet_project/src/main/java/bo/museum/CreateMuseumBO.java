@@ -1,6 +1,7 @@
 package bo.museum;
 
 import com.mongodb.client.MongoCollection;
+import io.qameta.allure.Step;
 import mongo.MongoDb;
 import org.bson.Document;
 import org.testng.Assert;
@@ -16,71 +17,87 @@ public class CreateMuseumBO {
 
     CreateMuseumPO createMuseumPO = new CreateMuseumPO();
 
+
+    @Step("Navigate to create museum page")
     public CreateMuseumBO navigateToCreateMuseumPage(){
         createMuseumPO.getCreateMuseumLink().waitForLinkToBeClickable().click();
         return this;
     }
 
+    @Step("Focus and fill ukrainian title")
     public CreateMuseumBO focusAndFillUkrTitle(String value){
         createMuseumPO.getUkrTitleMuseumInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill ukrainian working hours")
     public CreateMuseumBO focusAndFillUkrWorkHrs(String value){
         createMuseumPO.getUkrWorkHrsMuseumInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill ukrainian address")
     public CreateMuseumBO focusAndFillUkrAddress(String value){
         createMuseumPO.getUkrAddressMuseumInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill english title")
     public CreateMuseumBO focusAndFillEngTitle(String value){
         createMuseumPO.getEngTitleMuseumInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill english working hours")
     public CreateMuseumBO focusAndFillEngWorkHrs(String value){
         createMuseumPO.getEngWorkHrsMuseumInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill english address")
     public CreateMuseumBO focusAndFillEngAddress(String value){
         createMuseumPO.getEngAddressMuseumInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill museum website url")
     public CreateMuseumBO focusAndFillMuseumLink(String value){
         createMuseumPO.getMuseumLinkInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill museum phone number")
     public CreateMuseumBO focusAndFillMuseumPhone(String value){
         createMuseumPO.getMuseumPhoneInput().focusInput().fillInput(value);
         return this;
     }
 
+    @Step("Focus and fill museum email")
     public CreateMuseumBO focusAndFillEmail(String value){
         createMuseumPO.getMuseumEmailInput().focusInput().fillInput(value);
         return this;
     }
 
+
+    @Step("Focus and fill museum image")
     public CreateMuseumBO fillImageInput(String image){
         createMuseumPO.getAddMuseumImage().fillInput(image);
         return this;
     }
 
+    @Step("Click create museum button")
     public CreateMuseumBO clickCreateMuseumBtn(){
         createMuseumPO.getCreateMuseumBtn().clickBtn();
         return this;
     }
 
+    @Step("Click close popup message button")
     public CreateMuseumBO closePupUpMessage(){
         createMuseumPO.getSuccessMessageBtn().waitForButtonToBeVisible().waitForButtonToBeClickable().clickBtn();
         return this;
     }
 
+    @Step("Verify museum is created")
     public CreateMuseumBO verifyMuseumCreated(String expectedUkrTitle, String expectedEngTitle){
         try {
             MongoDb.init();
