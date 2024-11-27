@@ -1,0 +1,5 @@
+browser=edge
+mongoDbDatabase=
+mongoDbPassword=
+mongoDbUser=
+mongoDbClusterName=
